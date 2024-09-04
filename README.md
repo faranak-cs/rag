@@ -2,6 +2,10 @@
 RAG models are seq2seq models with access to a retrieval mechanism providing relevant context documents at training and evaluation time.
 
 # Setup
+0. Install [Ollama](https://ollama.com/download) and pull down Llama3.1 using following command on Terminal:
+```
+ollama pull llama3.1
+```
 1. Clone the repo
 ```
 https://github.com/faranak-cs/rag.git
