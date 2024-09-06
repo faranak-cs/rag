@@ -34,3 +34,7 @@ python populate_database.py
 ```
 python query_data.py "How many players are there in monopoly?"
 ```
+# Output
+![Query](https://github.com/user-attachments/assets/1cfdd90d-c333-44d9-a8a9-9453d46dd3d9)
+
+
