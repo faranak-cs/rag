@@ -48,11 +48,17 @@ def query_rag(query_text: str):
     # SELECT MODEL
     model = Ollama(model="llama3.1")
 
+    response_text = ''
+
     # GENERATE RESPONSE WITH SOURCES
-    response_text = model.invoke(prompt)
-    sources = [doc.metadata.get("id", None) for doc, _score in results]
-    formatted_response = f"Response: {response_text}\nSources: {sources}"
-    print(formatted_response)
+    for text in model.stream(prompt):
+        response_text += text
+        print(response_text, end='\r')
+
+    # response_text = model.invoke(prompt)
+    # sources = [doc.metadata.get("id", None) for doc, _score in results]
+    # formatted_response = f"Response: {response_text}\nSources: {sources}"
+    # print(formatted_response)
 
 
 if __name__ == "__main__":
