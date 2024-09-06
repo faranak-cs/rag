@@ -10,27 +10,23 @@ ollama pull llama3.1
 ```
 https://github.com/faranak-cs/rag.git
 ```
-2. Checkout to dev branch
-```
-git checkout dev
-```
-3. Creat virtual envrionment
+2. Creat virtual envrionment
 ```
 python3 -m venv rag.env
 ```
-4. Activate virtual environment
+3. Activate virtual environment
 ```
 source rag.env/bin/activate
 ```
-5. Install packages
+4. Install packages
 ```
 python -m pip install -r requirements.txt
 ```
-6. Populate database
+5. Populate database
 ```
 python populate_database.py
 ```
-7. Ask questions
+6. Ask questions
 ```
 python query_data.py "How many players are there in monopoly?"
 ```
