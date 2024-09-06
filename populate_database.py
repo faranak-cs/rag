@@ -24,8 +24,11 @@ def main():
 
     # Create (or update) the data store.
     documents = load_documents()
+    # print(documents[0])
     chunks = split_documents(documents)
+    # print(chunks[0])
     add_to_chroma(chunks)
+    # print(chunks[0])
 
 
 def load_documents():
@@ -67,6 +70,7 @@ def add_to_chroma(chunks: list[Document]):
         print(f"👉 Adding new documents: {len(new_chunks)}")
         new_chunk_ids = [chunk.metadata["id"] for chunk in new_chunks]
         db.add_documents(new_chunks, ids=new_chunk_ids)
+        db.persist()
     else:
         print("✅ No new documents to add")
 
