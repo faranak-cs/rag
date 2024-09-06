@@ -1,0 +1,7 @@
+pypdf
+langchain
+langchain-community
+langchain-chroma
+chromadb 
+pytest
+boto3
