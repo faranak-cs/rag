@@ -19,8 +19,8 @@ Answer the question based on the above context: {question}
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("query_text", type=str, help="The query text.")
+    parser = argparse.ArgumentParser(description='Talk to your documents using RAG')
+    parser.add_argument("query_text", type=str, help="A query for the RAG")
     args = parser.parse_args()
     query_text = args.query_text
     query_rag(query_text)
