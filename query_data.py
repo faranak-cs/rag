@@ -2,13 +2,14 @@ import argparse
 from langchain_chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
 from langchain_community.llms.ollama import Ollama
+from IPython.display import display_pdf, display_markdown, Markdown, display
 
 from get_embedding_function import get_embedding_function
 
 CHROMA_PATH = "chroma"
 
 PROMPT_TEMPLATE = """
-Answer the question based only on the following context:
+Answer the question with detail based only on the following context:
 
 {context}
 
@@ -33,9 +34,10 @@ def query_rag(query_text: str):
     db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
 
     # SEARCH THE DATABASE
-    results = db.similarity_search_with_score(query_text, k=1)
+    results = db.similarity_search_with_score(query_text, k=5)
+    
     # for doc, score in results:
-    #     print(f"[SIM={score:3f}] {doc.page_content} [{doc.metadata}]")
+        # print(f"[SIM={score:3f}] {doc.page_content} [{doc.metadata}]")
 
     # PREPARE THE CONTEXT
     context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in results])
@@ -48,18 +50,18 @@ def query_rag(query_text: str):
     # SELECT MODEL
     model = Ollama(model="llama3.1")
 
-    response_text = ''
-
+    # response_text = ""
     # GENERATE RESPONSE WITH SOURCES
-    for text in model.stream(prompt):
-        response_text += text
-        print(response_text, end='\r')
+    # for text in model.stream(prompt):
+    #     response_text += text
+    #     print(response_text, end='\r')
 
-    # response_text = model.invoke(prompt)
+    response = model.invoke(prompt)
+
     # sources = [doc.metadata.get("id", None) for doc, _score in results]
     # formatted_response = f"Response: {response_text}\nSources: {sources}"
-    # print(formatted_response)
 
+    display_pdf(response)
 
 if __name__ == "__main__":
     main()

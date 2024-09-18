@@ -3,5 +3,6 @@ langchain
 langchain-community
 langchain-chroma
 chromadb 
+ipython
 pytest
 boto3

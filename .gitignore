@@ -4,3 +4,5 @@ __pycache__
 backup
 chroma
 rag.env
+test.py
+data
