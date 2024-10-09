@@ -2,7 +2,5 @@ pypdf
 langchain
 langchain-community
 langchain-chroma
-chromadb 
+langchain-ollama
 ipython
-pytest
-boto3

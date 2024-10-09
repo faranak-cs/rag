@@ -1,7 +1,7 @@
 import argparse
 from langchain_chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
-from langchain_community.llms.ollama import Ollama
+from langchain_ollama import OllamaLLM
 from IPython.display import display_pdf, display_markdown, Markdown, display
 
 from get_embedding_function import get_embedding_function
@@ -48,7 +48,7 @@ def query_rag(query_text: str):
     prompt = prompt_template.format(context=context_text, question=query_text)
 
     # SELECT MODEL
-    model = Ollama(model="llama3.1")
+    model = OllamaLLM(model="llama3.1")
 
     # response_text = ""
     # GENERATE RESPONSE WITH SOURCES
